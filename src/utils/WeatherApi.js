@@ -18,7 +18,7 @@ class WeatherApi extends React.Component {
     }
     return Promise.reject(`Error: ${res.status}`);
   }
-
+  
   async getCurrentWeather(parsedLocation) {
     const res = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${parsedLocation}&days=1`);
     return this._processResponse(res);
