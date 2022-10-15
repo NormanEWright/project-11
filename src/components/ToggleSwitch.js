@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../blocks/ToggleSwitch.css';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 
 function ToggleSwitch() {
-  const [checked, setChecked] = useState(false);
-  const { currentTemperatureUnit, handleToggleSwitchChange } = React.useContext(CurrentTemperatureUnitContext);
+  const { handleToggleSwitchChange } = React.useContext(CurrentTemperatureUnitContext);
 
   const handleChange = (evt) => {
-    setChecked(evt.target.checked);
     handleToggleSwitchChange();
   }
 
