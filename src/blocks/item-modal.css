@@ -1,0 +1,39 @@
+.popup__item-wrapper {
+  width: 498px;
+  height: 610px;
+  padding: 0px;
+  margin: 106px auto;
+  background: #FFFFFF;
+  border-radius: 16px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.popup__item-image {
+  object-fit: contain;
+  width: 100%;
+  max-height: 498px;
+  margin-bottom: 20px;
+}
+
+.popup__item-title,
+.popup__item-description {
+  margin-top: 0px;
+  margin-left: 32px;
+  padding: 0px;
+  color: #000000;
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.popup__item-title {
+  margin-bottom: 12px;
+}
+
+.popup__item-description {
+  margin-bottom: 0px;
+}

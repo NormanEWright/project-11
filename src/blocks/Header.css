@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 100%;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.header__left-side,
+.header__right-side {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.header__left-side {
+  gap: 24px;
+}
+
+.header__add-button {
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+.header__add-button:hover {
+  cursor: pointer;
+}
+
+.header__user-name {
+  margin-right: 88px;
+}

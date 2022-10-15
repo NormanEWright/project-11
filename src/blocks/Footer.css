@@ -1,0 +1,17 @@
+.footer {
+  height: 20px;
+  width: 100%;
+  margin-top: 171px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.footer__creator,
+.footer__year {
+  padding: 0;
+  margin: 0;
+}
