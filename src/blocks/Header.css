@@ -28,7 +28,8 @@
   border: none;
 }
 
-.header__add-button:hover {
+.header__add-button:hover,
+.header__user-name:hover {
   cursor: pointer;
 }
 
