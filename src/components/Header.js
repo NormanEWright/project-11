@@ -2,6 +2,7 @@ import React from 'react';
 import "../blocks/Header.css";
 import logo from "../images/Header/logo.svg";
 import avatar from "../images/Header/avatar.png";
+import ToggleSwitch from './ToggleSwitch';
 
 function Header(props) {
   return (
@@ -13,11 +14,8 @@ function Header(props) {
         </p>
       </div>
       <div className="header__right-side">
-        <button 
-          className="header__add-button"
-          onClick={props.openPopup}
-        >
-          + Add clothes</button>
+        <ToggleSwitch />
+        <button className="header__add-button" onClick={props.openPopup}>+ Add clothes</button>
         <p className="header__user-name">{props.username}</p>
         <img className="header__avatar" src={avatar} alt="User avatar" />
       </div>
