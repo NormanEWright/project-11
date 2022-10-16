@@ -13,5 +13,5 @@ export const useGlobalKeydownListener = (key, callback) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     }
-  }, []);
+  });
 }

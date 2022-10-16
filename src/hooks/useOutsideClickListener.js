@@ -13,5 +13,5 @@ export const useOutsideClickListener = (tag, callback) => {
     return () => {
       document.removeEventListener("mousedown", handleClick);
     }
-  }, []);
+  });
 }
