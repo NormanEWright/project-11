@@ -35,4 +35,6 @@
 
 .header__user-name {
   margin-right: 88px;
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
 }
