@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import '../blocks/App.css';
 import Header from './Header';
 import Main from './Main';
+import Profile from './Profile';
 import ModalWithForm from './ModalWithForm';
 import NewGarmentForm from './NewGarmentForm';
 import Footer from './Footer';
@@ -66,13 +68,22 @@ function App() {
   return (
     <div className='App'>
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
-        <Header username="Norman Wright" name="add" currentDate={currentDate} currentLocation={weather.location} openPopup={openNewGarmentModal} onClose={closeModals} />
-        <Main weather={weather} clothingItems={defaultClothingItems} openPopup={openPreviewModal} />
-        <ModalWithForm title="New garment" id="addGarment" name="add" buttonText="Add garment" isOpen={isNewGarmentModalOpen} onClose={closeModals} >
-          <NewGarmentForm />
-        </ModalWithForm>
-        <ItemModal name="item" isOpen={isPreviewModalOpen} onClose={closeModals} data={itemData} />
-        <Footer />
+        <BrowserRouter>
+          <Header username="Norman Wright" name="add" currentDate={currentDate} currentLocation={weather.location} openPopup={openNewGarmentModal} onClose={closeModals} />
+          <Switch>
+            <Route exact path="/">
+              <Main weather={weather} clothingItems={defaultClothingItems} openPopup={openPreviewModal} />
+            </Route>
+            <Route path="/profile">
+              <Profile user="Norman Wright" weather={weather} clothingItems={defaultClothingItems} openPopup={openPreviewModal} />
+            </Route>
+          </Switch>
+          <ModalWithForm title="New garment" id="addGarment" name="add" buttonText="Add garment" isOpen={isNewGarmentModalOpen} onClose={closeModals} >
+            <NewGarmentForm />
+          </ModalWithForm>
+          <ItemModal name="item" isOpen={isPreviewModalOpen} onClose={closeModals} data={itemData} />
+          <Footer />
+        </BrowserRouter>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
