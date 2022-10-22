@@ -1,5 +1,4 @@
 import React from 'react';
-import { apiKey } from './constants';
 
 export function getWeatherTemperature(temperature) {
   if (temperature >= 86) {
@@ -20,10 +19,9 @@ class WeatherApi extends React.Component {
   }
   
   async getCurrentWeather(parsedLocation) {
-    const res = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${parsedLocation}&days=1`);
+    const res = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=18.0179&lon=-76.8099&appid=cd2258b79f5b2bfac5d80485ea366632&units=imperial');
     return this._processResponse(res);
   }
 }
-
 
 export default WeatherApi;
