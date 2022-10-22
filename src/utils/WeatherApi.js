@@ -15,7 +15,6 @@ class WeatherApi extends React.Component {
     const res = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=18.0179&lon=-76.8099&appid=cd2258b79f5b2bfac5d80485ea366632&units=imperial');
     return this._processResponse(res)
     .then((res) => {
-      console.log(Math.round(res.main.temp));
       const data = {
         temp_f: `${Math.round(res.main.temp)}°F`,
         temp_c: `${Math.round((res.main.temp - 32) * 5 / 9)}°C`,
@@ -24,7 +23,6 @@ class WeatherApi extends React.Component {
         isDayTime: isDayTime,
         condition: res.weather[0].description,
       }
-      // console.log(data);
       return data;
     })
       .catch((err) => {
