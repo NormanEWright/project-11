@@ -32,6 +32,8 @@
 
 .popup__item-title {
   margin-bottom: 12px;
+  margin-bottom: 12px;
+  margin-top: -7px;
 }
 
 .popup__item-description {

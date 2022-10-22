@@ -24,6 +24,26 @@
   -o-transition: visibility 0s, opacity 0.5s linear;
   transition: visibility 0s, opacity 0.5s linear;
 }
+.popup__delete-button {
+  color: #FF4D00;
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 30px;
+  bottom: 68px;
+}
+
+.popup__delete-button:hover,
+.popup__close-button:hover,
+.popup__confirm-delete-button:hover,
+.popup__cancel-button {
+  cursor: pointer;
+}
 
 .popup__close-button {
   height: 30px;
@@ -34,10 +54,6 @@
   padding: 0;
   border: none;
   background-color: transparent;
-}
-
-.popup__close-button:hover {
-  cursor: pointer;
 }
 
 .popup__close-icon {
@@ -162,4 +178,39 @@
   background-color: transparent;
   color: #000000;
   border: 1px solid #000000;
+}
+
+.popup__delete-item-form {
+  width: 670px;
+  height: 280px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 28px 36px 28px;
+  margin: 255px auto 0px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.popup__confirm-delete-button,
+.popup__cancel-button {
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background: transparent;
+  border: none;
+}
+
+.popup__confirm-text {
+  margin-bottom: 40px;
+}
+
+.popup__confirm-delete-button {
+  margin-bottom: 24px;
+  color: rgba(255, 77, 0, 1);
 }
