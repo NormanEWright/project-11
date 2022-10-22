@@ -15,7 +15,7 @@ import WeatherApi from '../utils/WeatherApi';
 import { useGlobalKeydownListener } from '../hooks/useGlobalKeydownListener';
 import { useOutsideClickListener } from '../hooks/useOutsideClickListener';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
-import { getItems, addItem } from '../utils/api';
+import { getItems, addItem, removeItem } from '../utils/api';
 
 const api = new WeatherApi();
 
@@ -28,6 +28,7 @@ function App() {
   const [itemData, setItemData] = useState({link: '', title: '', descriptions: ''});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
   const [clothingList, setClothingList] = useState([]);
+  const [deleteItem, setDeleteItem] = useState(null);
 
   useEffect(() => {
     api
@@ -81,13 +82,16 @@ function App() {
       : setCurrentTemperatureUnit('F');
   };
 
-  // const confirmDelete = () => {
-  //   return;
-  // }
-
   const handleCardDelete = () => {
-    return;
-  }
+    removeItem(deleteItem)
+    .then((res) => {
+      setClothingList(clothingList.filter((item) => item.id !== deleteItem))
+      setIsConfirmModalOpen(false);
+      setDeleteItem(null);
+      closeModals();
+    })
+    .catch((err) => console.log(err));
+  };
 
   const handleAddItemSubmit = (name, imageUrl, weatherType) => {
     addItem({ name, imageUrl, weatherType })
@@ -112,9 +116,9 @@ function App() {
           <ModalWithForm title="New garment" id="addGarment" name="add" buttonText="Add garment" isOpen={isNewGarmentModalOpen} onClose={closeModals}>
             <NewGarmentForm />
           </ModalWithForm>
-          <ItemModal name="item" isOpen={isPreviewModalOpen} onClose={closeModals} data={itemData} confirmDelete={openConfirmationModal} />
+          <ItemModal name="item" isOpen={isPreviewModalOpen} closePopup={closeModals} data={itemData} openConfirmationModal={openConfirmationModal} setDeleteItem={setDeleteItem} />
           <AddItemModal onAddItem={handleAddItemSubmit} />
-          <DeleteConfirmationModal name="confirm" isOpen={isConfirmModalOpen} onClose={closeModals} confirmDeleteCard={handleCardDelete} />
+          <DeleteConfirmationModal name="confirm" isOpen={isConfirmModalOpen} onClose={closeModals} handleCardDelete={handleCardDelete} />
           <Footer />
         </BrowserRouter>
       </CurrentTemperatureUnitContext.Provider>
