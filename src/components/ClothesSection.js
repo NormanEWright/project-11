@@ -12,12 +12,7 @@ function ClothesSection({ weather, clothingItems, openPopup, openPopupWithForm }
       </div>
       <ul className="profile__card-list">
         {
-          clothingItems.map(item => <ItemCard
-            key={item._id}
-            data={item}
-            openPopup={openPopup}
-            currentWeather={weather.range}
-          />)
+          clothingItems.map(item => <ItemCard key={item.id} data={item} openPopup={openPopup} weatherRange={weather.range} />)
         }
       </ul>
     </div>
