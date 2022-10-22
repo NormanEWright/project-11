@@ -1,5 +1,8 @@
 // const baseUrl = 'https://my-json-server.typicode.com/normanewright/se_project_react';
 const baseUrl = 'http://localhost:3001/items';
+const headers = {
+  "Content-Type": "application/json",
+};
 
 // Process response
 const processResponse = (res) => {
@@ -11,46 +14,40 @@ const processResponse = (res) => {
 }
 
 // Get request
-const getItems = () => {
-  return fetch(
+const getItems = async () => {
+  const res = await fetch(
     `${baseUrl}`,
     {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers,
     }
-  )
-  .then(processResponse)
+  );
+  return processResponse(res);
 };
 
 // POST request
-const addItem = ({ id, name, imageUrl, weatherType }) => {
-  return fetch(
+const addItem = async ({ id, name, imageUrl, weatherType }) => {
+  const res = await fetch(
     `${baseUrl}`,
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify({ id, name, imageUrl, weatherType })
     }
-  )
-  .then(processResponse)
+  );
+  return processResponse(res);
 }
 
 // DELETE request
-const removeItem = (baseUrl, id) => {
-  return fetch(
+const removeItem = async (id) => {
+  const res = await fetch(
     `${baseUrl}/${id}`,
     {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers,
     }
-  )
-  .then(processResponse);
+  );
+  return processResponse(res);
 };
 
 export { getItems, addItem, removeItem };
