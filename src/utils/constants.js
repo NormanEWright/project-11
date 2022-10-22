@@ -20,6 +20,9 @@ export const currentDate = new Date().toLocaleString('default', {
   day: 'numeric' 
 });
 
+const hours = new Date().getHours()
+export const isDayTime = hours > 6 && hours < 20;
+
 // API key
 export const apiKey = "8aaee888f88e431bb8112030220410";
 
