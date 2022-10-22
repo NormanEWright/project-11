@@ -4,6 +4,7 @@ import '../blocks/card.css';
 function ItemCard({ data, openPopup, weatherRange }) {
   const openPreview = () => {
     openPopup("item", {
+      id: data.id,
       link: data.imageUrl,
       title: data.name,
       description: data.weather,
