@@ -7,20 +7,15 @@ import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUni
 
 function Main({ weather, clothingItems, openPopup }) {
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
-
+  // console.log(weather);
   return (
     <main className="main">
-      <WeatherCard weather={ weather } />
+      <WeatherCard weather={weather} />
       <section className="card__section">
         <h3 className="card__heading">Today is {currentTemperatureUnit === 'F' ? weather.temp_f : weather.temp_c} / You may want to wear:</h3>
         <ul className='card__list'>
           {
-            clothingItems.map(item => <ItemCard
-              key={item._id}
-              data={item}
-              openPopup={openPopup}
-              currentWeather={weather.range}
-            />)
+            clothingItems.map(item => <ItemCard key={item.id} data={item} openPopup={openPopup} weatherRange={weather.range} />)
           }
         </ul>
       </section>
