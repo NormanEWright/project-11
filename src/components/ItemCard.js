@@ -4,7 +4,7 @@ import '../blocks/card.css';
 function ItemCard({ data, openPopup, currentWeather }) {
   const openPreview = () => {
     openPopup("item", {
-      link: data.link,
+      link: data.imageUrl,
       title: data.name,
       description: data.weather,
     });
@@ -15,7 +15,7 @@ function ItemCard({ data, openPopup, currentWeather }) {
       <li
         key={data._id}
         className="card"
-        style={{ backgroundImage: `url(${data.link})` }}
+        style={{ backgroundImage: `url(${data.imageUrl})` }}
         onClick={openPreview}
       >
         <div>
