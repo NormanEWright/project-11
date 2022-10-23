@@ -24,7 +24,7 @@ const hours = new Date().getHours()
 export const isDayTime = hours > 6 && hours < 20;
 
 // API key
-export const apiKey = "8aaee888f88e431bb8112030220410";
+export const key = "cd2258b79f5b2bfac5d80485ea366632";
 
 // Default Content
 export const defaultClothingItems = [
