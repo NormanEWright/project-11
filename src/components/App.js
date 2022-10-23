@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getItems(`baseUrl`)
+    getItems()
       .then((items) => {
         setClothingList(items);
       })
@@ -93,34 +93,80 @@ function App() {
     .catch((err) => console.log(err));
   };
 
-  const handleAddItemSubmit = (name, imageUrl, weatherType) => {
-    addItem({ name, imageUrl, weatherType })
-      .then((newItem) => {
-        setClothingList([newItem, ...clothingList]);
-      });
+  const handleAddItemSubmit = (name, imageUrl, weather) => {
+    addItem(name, imageUrl, weather)
+    .then((item) => {
+      console.log(item);
+      setClothingList([item, ...clothingList]);
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
     <div className='App'>
-      <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
         <BrowserRouter>
-          <Header username="Norman Wright" name="add" currentDate={currentDate} currentLocation={weather.location} openPopup={openNewGarmentModal} onClose={closeModals} />
+          <Header
+            username="Norman Wright"
+            name="add"
+            currentDate={currentDate}
+            currentLocation={weather.location}
+            openPopup={openNewGarmentModal}
+            onClose={closeModals}
+          />
           <Switch>
             <Route exact path="/">
-              <Main weather={weather} clothingItems={clothingList} openPopup={openPreviewModal} />
+              <Main
+                weather={weather}
+                clothingItems={clothingList}
+                openPopup={openPreviewModal}
+              />
             </Route>
             <Route path="/profile">
-              <Profile user="Norman Wright" weather={weather} clothingItems={clothingList} openPopup={openPreviewModal} openPopupWithForm={openNewGarmentModal} addNewItem={handleAddNewItemClick} isOpen={isAddItemModalOpen} />
+              <Profile
+                user="Norman Wright"
+                weather={weather}
+                clothingItems={clothingList}
+                openPopup={openPreviewModal}
+                openPopupWithForm={openNewGarmentModal}
+                addNewItem={handleAddNewItemClick}
+                isOpen={isAddItemModalOpen}
+              />
             </Route>
           </Switch>
-          <ModalWithForm title="New garment" id="addGarment" name="add" buttonText="Add garment" isOpen={isNewGarmentModalOpen} onClose={closeModals}>
-            <NewGarmentForm />
-          </ModalWithForm>
-          <ItemModal name="item" isOpen={isPreviewModalOpen} closePopup={closeModals} data={itemData} openConfirmationModal={openConfirmationModal} setDeleteItem={setDeleteItem} />
-          <AddItemModal onAddItem={handleAddItemSubmit} />
-          <DeleteConfirmationModal name="confirm" isOpen={isConfirmModalOpen} onClose={closeModals} handleCardDelete={handleCardDelete} />
-          <Footer />
         </BrowserRouter>
+        <Footer />
+        <ModalWithForm
+          name="add"
+          title="New garment"
+          buttonText="Add garment"
+          isOpen={isNewGarmentModalOpen}
+          closePopup={closeModals}
+          onAddItem={handleAddItemSubmit}
+        >
+          <NewGarmentForm />
+        </ModalWithForm>
+        <ItemModal
+          name="item"
+          isOpen={isPreviewModalOpen}
+          closePopup={closeModals}
+          data={itemData}
+          openConfirmationModal={openConfirmationModal}
+          setDeleteItem={setDeleteItem}
+        />
+        <AddItemModal
+          isOpen={isAddItemModalOpen}
+          closePopup={closeModals}
+          onAddItem={handleAddItemSubmit}
+        />
+        <DeleteConfirmationModal
+          name="confirm" 
+          isOpen={isConfirmModalOpen}
+          onClose={closeModals}
+          handleCardDelete={handleCardDelete}
+        />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
