@@ -28,6 +28,9 @@
   mix-blend-mode: multiply;
   cursor: pointer;
   box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card__heading {
