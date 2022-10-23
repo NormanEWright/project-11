@@ -7,7 +7,7 @@ import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUni
 
 function Main({ weather, clothingItems, openPopup }) {
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
-  // console.log(weather);
+  
   return (
     <main className="main">
       <WeatherCard weather={weather} />
