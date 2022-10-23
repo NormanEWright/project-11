@@ -2,14 +2,14 @@ import React from "react";
 import "../blocks/popup.css";
 import closeIcon from "../images/ModalWithForm/close-button.svg";
 
-function ModalWithForm(props) {
+function ModalWithForm({ name, title, children, buttonText, isOpen, closePopup, handleSubmit }) {
   return(
-    <div className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : ''}`}>
+    <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}>
       <form action="submit" className="popup__form" id="add-garment-form" noValidate>
-        <h3 className="popup__form-heading">{props.title}</h3>
-        {props.children}
-        <button type="submit" className="popup__form-add-button" >{props.buttonText}</button>
-        <button type="button" className="popup__close-button" onClick={props.onClose}>
+        <h3 className="popup__form-heading">{title}</h3>
+        {children}
+        <button type="submit" className="popup__form-add-button" onClick={handleSubmit} >{buttonText}</button>
+        <button type="button" className="popup__close-button" onClick={closePopup}>
           <img className="popup__close-icon" src={closeIcon} alt="Close popup button" />
         </button>
       </form>
