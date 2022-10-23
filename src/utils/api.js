@@ -26,13 +26,13 @@ const getItems = async () => {
 };
 
 // POST request
-const addItem = async ({ id, name, imageUrl, weatherType }) => {
+const addItem = async (name, imageUrl, weather) => {
   const res = await fetch(
     `${baseUrl}`,
     {
       method: "POST",
       headers: headers,
-      body: JSON.stringify({ id, name, imageUrl, weatherType })
+      body: JSON.stringify(name, imageUrl, weather)
     }
   );
   return processResponse(res);
