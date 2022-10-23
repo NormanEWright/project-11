@@ -5,7 +5,7 @@ import Header from './Header';
 import Main from './Main';
 import Profile from './Profile';
 import ModalWithForm from './ModalWithForm';
-// import NewGarmentForm from './NewGarmentForm';
+import NewGarmentForm from './NewGarmentForm';
 import AddItemModal from './AddItemModal';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import Footer from './Footer';
@@ -23,6 +23,7 @@ function App() {
   const [weather, setWeather] = useState({});
   const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [isNewGarmentModalOpen, setIsNewGarmentModalOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemwModalOpen] = useState(false);
   const [itemData, setItemData] = useState({link: '', title: '', descriptions: ''});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
@@ -52,6 +53,10 @@ function App() {
     setIsAddItemwModalOpen(true);
   }
 
+  function openNewGarmentModal() {
+    setIsNewGarmentModalOpen(true);
+  }
+
   function openConfirmationModal() {
     setIsConfirmModalOpen(true);
   }
@@ -62,7 +67,7 @@ function App() {
   }
 
   const closeModals = useCallback(() => {
-    // setIsNewGarmentModalOpen(false);
+    setIsNewGarmentModalOpen(false);
     setIsPreviewModalOpen(false);
     setIsAddItemwModalOpen(false);
     setIsConfirmModalOpen(false);
@@ -108,7 +113,7 @@ function App() {
             name="add"
             currentDate={currentDate}
             currentLocation={weather.location}
-            openPopup={openAddNewItemModal}
+            openPopup={openNewGarmentModal}
             onClose={closeModals}
           />
           <Switch>
@@ -136,11 +141,11 @@ function App() {
           title="New garment"
           name="add"
           buttonText="Add garment"
-          isOpen={isAddItemModalOpen}
+          isOpen={isNewGarmentModalOpen}
           closePopup={closeModals}
           onAddItem={handleAddItemSubmit}
         >
-          {/* <NewGarmentForm /> */}
+          <NewGarmentForm />
         </ModalWithForm>
         <ItemModal
           name="item"
