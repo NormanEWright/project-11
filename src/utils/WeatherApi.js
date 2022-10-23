@@ -1,6 +1,7 @@
 import React from 'react';
 import { isDayTime, key } from '../utils/constants';
 import getWeatherTemperature from './getWeatherTemperature';
+import { coords } from '../utils/constants';
 
 
 class WeatherApi extends React.Component {
@@ -12,7 +13,7 @@ class WeatherApi extends React.Component {
   }
   
   async getCurrentWeather(parsedLocation) {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=18.0179&lon=-76.8099&appid=${key}&units=imperial`);
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.long}&lon=${coords.lat}&appid=${key}&units=imperial`);
     return this._processResponse(res)
     .then((res) => {
       const data = {
