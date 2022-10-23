@@ -25,6 +25,10 @@ export const isDayTime = hours > 6 && hours < 20;
 
 // API key
 export const key = "cd2258b79f5b2bfac5d80485ea366632";
+export const coords = {
+  long: '18.0179',
+  lat: '-76.8099',
+}
 
 // Default Content
 export const defaultClothingItems = [
@@ -34,7 +38,6 @@ export const defaultClothingItems = [
     weather: "hot",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591",
   }
-
   ,
   {
     _id: 1,
@@ -42,7 +45,6 @@ export const defaultClothingItems = [
     weather: "warm",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8",
   }
-
   ,
   {
     _id: 2,
@@ -50,7 +52,6 @@ export const defaultClothingItems = [
     weather: "cold",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png?etag=f4bb188deaa25ac84ce2338be2d404ad",
   }
-
   ,
   {
     _id: 3,
@@ -58,7 +59,6 @@ export const defaultClothingItems = [
     weather: "cold",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
   }
-
   ,
   {
     _id: 4,
@@ -66,7 +66,6 @@ export const defaultClothingItems = [
     weather: "hot",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
   }
-
   ,
   {
     _id: 5,
