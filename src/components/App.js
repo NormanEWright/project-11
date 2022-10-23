@@ -5,7 +5,7 @@ import Header from './Header';
 import Main from './Main';
 import Profile from './Profile';
 import ModalWithForm from './ModalWithForm';
-import NewGarmentForm from './NewGarmentForm';
+// import NewGarmentForm from './NewGarmentForm';
 import AddItemModal from './AddItemModal';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import Footer from './Footer';
@@ -21,7 +21,6 @@ const api = new WeatherApi();
 
 function App() {
   const [weather, setWeather] = useState({});
-  const [isNewGarmentModalOpen, setIsNewGarmentModalOpen] = useState(false);
   const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isAddItemModalOpen, setIsAddItemwModalOpen] = useState(false);
@@ -49,12 +48,8 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  function handleAddNewItemClick() {
+  function openAddNewItemModal() {
     setIsAddItemwModalOpen(true);
-  }
-
-  function openNewGarmentModal() {
-    setIsNewGarmentModalOpen(true);
   }
 
   function openConfirmationModal() {
@@ -67,7 +62,7 @@ function App() {
   }
 
   const closeModals = useCallback(() => {
-    setIsNewGarmentModalOpen(false);
+    // setIsNewGarmentModalOpen(false);
     setIsPreviewModalOpen(false);
     setIsAddItemwModalOpen(false);
     setIsConfirmModalOpen(false);
@@ -113,7 +108,7 @@ function App() {
             name="add"
             currentDate={currentDate}
             currentLocation={weather.location}
-            openPopup={openNewGarmentModal}
+            openPopup={openAddNewItemModal}
             onClose={closeModals}
           />
           <Switch>
@@ -130,8 +125,7 @@ function App() {
                 weather={weather}
                 clothingItems={clothingList}
                 openPopup={openPreviewModal}
-                openPopupWithForm={openNewGarmentModal}
-                addNewItem={handleAddNewItemClick}
+                openPopupWithForm={openAddNewItemModal}
                 isOpen={isAddItemModalOpen}
               />
             </Route>
@@ -139,14 +133,14 @@ function App() {
         </BrowserRouter>
         <Footer />
         <ModalWithForm
-          name="add"
           title="New garment"
+          name="add"
           buttonText="Add garment"
-          isOpen={isNewGarmentModalOpen}
+          isOpen={isAddItemModalOpen}
           closePopup={closeModals}
           onAddItem={handleAddItemSubmit}
         >
-          <NewGarmentForm />
+          {/* <NewGarmentForm /> */}
         </ModalWithForm>
         <ItemModal
           name="item"
