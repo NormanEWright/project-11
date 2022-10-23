@@ -9,7 +9,7 @@ import NewGarmentForm from './NewGarmentForm';
 import AddItemModal from './AddItemModal';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import Footer from './Footer';
-import { currentDate } from '../utils/constants';
+import { currentDate, coords } from '../utils/constants';
 import ItemModal from './ItemModal';
 import WeatherApi from '../utils/WeatherApi';
 import { useGlobalKeydownListener } from '../hooks/useGlobalKeydownListener';
@@ -32,7 +32,7 @@ function App() {
 
   useEffect(() => {
     api
-      .getCurrentWeather("18.0179, -76.8099")
+      .getCurrentWeather(`${coords.lat}, ${coords.long}`)
       .then((data) => {
         setWeather(data);
       })
@@ -93,10 +93,9 @@ function App() {
     .catch((err) => console.log(err));
   };
 
-  const handleAddItemSubmit = (name, imageUrl, weather) => {
-    addItem(name, imageUrl, weather)
+  const handleAddItemSubmit = (name, imageUrl, weatherType) => {
+    addItem(name, imageUrl, weatherType)
     .then((item) => {
-      console.log(item);
       setClothingList([item, ...clothingList]);
     })
     .catch((err) => console.log(err));
