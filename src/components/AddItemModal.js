@@ -1,94 +1,72 @@
 import React from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
+const AddItemModal = ({ isOpen, closePopup, onAddItem }) => {
   const [name, setName] = React.useState('');
   const [imageUrl, setImageUrl] = React.useState('');
-  const [weatherType, setWeatherType] = React.useState(null);
+  const [weather, setWeather] = React.useState(null);
 
   React.useEffect(() => {
-    // function resetInputFields(e) {
-    //   setName('');
-    //   setImageUrl('');
-    //   setWeatherType('')
-    // }
+    setName('');
+    setImageUrl('');
   }, [isOpen]);
 
-  const handleNameChange = (e) => {
+  const handleName = (e) => {
     setName(e.target.value);
   };
 
-  const handleImageUrlChange = (e) => {
+  const handleImage = (e) => {
     setImageUrl(e.target.value);
   };
 
-  const handleWeatherTypeChange = (e) => {
-    setWeatherType(e.target.value);
+  const handleWeather = (e) => {
+    setWeather(e.target.value);
   };
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   onAddItem({ name, imageUrl, weatherType });
-  //   onClose();
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddItem(name, imageUrl, weather);
+    closePopup();
+  };
 
   return (
     <ModalWithForm
+      isOpen={isOpen}
       title="New garment"
-      id="addGarment"
       name="add"
       buttonText="Add garment"
-      isOpen={isOpen}
-      onClose={onClose}
+      closePopup={closePopup}
+      onAddItem={onAddItem}
+      handleSubmit={handleSubmit}
+      handleName={handleName}
+      handleWeather={handleWeather}
+      handleImageChange={handleImage}
     >
       <label htmlFor="name" className="popup__form-label">Name<br />
-        <input type="text" id="name" className="popup__form-input" onChange={handleNameChange} value={name} placeholder="Name" required />
+        <input type="text" id="name" className="popup__form-input" onChange={handleName} value={name} placeholder="Name" required />
       </label>
       <label htmlFor="link" className="popup__form-label">Image<br />
-        <input type="url" id="link" className="popup__form-input" onChange={handleImageUrlChange} value={imageUrl} placeholder="Image URL" required />
+        <input type="url" id="link" className="popup__form-input" onChange={handleImage} value={imageUrl} placeholder="Image URL" required />
       </label>
       <div className="popup__form-radio-section">
         <h4 className="popup__form-radio-heading">Select the weather type:</h4>
         <ul className="popup__form-radio-list">
           <li className="popup__form-radio-element">
-            <label htmlFor="hot" className={`popup__form-radio-label ${weatherType === 'hot' ? 'popup__form-radio-label_checked' : ''}`}>
-              <input
-                type="radio" 
-                id="hot" 
-                name="weather" 
-                value="hot" 
-                className="popup__form-radio" 
-                checked={weatherType === 'hot'}
-                onChange={handleWeatherTypeChange} />
-                Hot
+            <label htmlFor="hot" className={`popup__form-radio-label ${weather === 'hot' ? 'popup__form-radio-label_checked' : ''}`}>
+              <input type="radio" id="hot" name="weather" value="hot" className="popup__form-radio" checked={weather} onChange={handleWeather} />
+              Hot
             </label>
           </li>
           <li className="popup__form-radio-element">
-            <label htmlFor="warm" className={`popup__form-radio-label ${weatherType === 'warm' ? 'popup__form-radio-label_checked' : ''}`}>
-              <input 
-                type="radio" 
-                id="warm" 
-                name="weather" 
-                value="warm" 
-                className="popup__form-radio"
-                checked={weatherType === 'warm'} 
-                onChange={handleWeatherTypeChange} 
-              />
-                Warm
+            <label htmlFor="warm" className={`popup__form-radio-label ${weather === 'warm' ? 'popup__form-radio-label_checked' : ''}`}>
+              <input type="radio" id="warm" name="weather" value="warm" className="popup__form-radio" checked={weather} onChange={handleWeather} />
+              Warm
             </label>
           </li>
           <li className="popup__form-radio-element">
-            <label htmlFor="cold" className={`popup__form-radio-label ${weatherType === 'cold' ? 'popup__form-radio-label_checked' : ''}`}>
-              <input 
-                type="radio" 
-                id="cold" 
-                name="weather" 
-                value="cold" 
-                className="popup__form-radio"
-                checked={weatherType === 'cold'} 
-                onChange={handleWeatherTypeChange} 
-              />
-               Cold
+            <label htmlFor="cold" className={`popup__form-radio-label ${weather === 'cold' ? 'popup__form-radio-label_checked' : ''}`}>
+              <input type="radio" id="cold" name="weather" value="cold" className="popup__form-radio" checked={weather} onChange={handleWeather} />
+              Cold
             </label>
           </li>
         </ul>
