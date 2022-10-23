@@ -1,5 +1,5 @@
-// const baseUrl = 'https://my-json-server.typicode.com/normanewright/se_project_react';
-const baseUrl = 'http://localhost:3001/items';
+const baseUrl = 'https://my-json-server.typicode.com/normanewright/se_project_react';
+// const baseUrl = 'http://localhost:3001/items';
 const headers = {
   "Content-Type": "application/json",
 };
@@ -26,13 +26,14 @@ const getItems = async () => {
 };
 
 // POST request
-const addItem = async (name, imageUrl, weather) => {
+const addItem = async (name, imageUrl, weatherType) => {
+  const body = {name: name, imageUrl: imageUrl, weather: weatherType}
   const res = await fetch(
     `${baseUrl}`,
     {
       method: "POST",
       headers: headers,
-      body: JSON.stringify(name, imageUrl, weather)
+      body: JSON.stringify(body)
     }
   );
   return processResponse(res);
