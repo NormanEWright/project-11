@@ -106,7 +106,7 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <BrowserRouter>
+        <BrowserRouter basename='/project-11'>
           <Header
             username="Norman Wright"
             name="add"
