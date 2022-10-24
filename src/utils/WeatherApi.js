@@ -26,9 +26,6 @@ class WeatherApi extends React.Component {
       }
       return data;
     })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 }
 
