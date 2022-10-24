@@ -4,11 +4,12 @@ import ModalWithForm from "./ModalWithForm";
 const AddItemModal = ({ isOpen, closePopup, onAddItem }) => {
   const [name, setName] = React.useState('');
   const [imageUrl, setImageUrl] = React.useState('');
-  const [weatherType, setWeather] = React.useState(null);
+  const [weatherType, setWeatherType] = React.useState(null);
 
   React.useEffect(() => {
     setName('');
     setImageUrl('');
+    setWeatherType(null);
   }, [isOpen]);
 
   const handleName = (e) => {
@@ -20,7 +21,7 @@ const AddItemModal = ({ isOpen, closePopup, onAddItem }) => {
   };
 
   const handleWeather = (e) => {
-    setWeather(e.target.value);
+    setWeatherType(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -53,7 +54,7 @@ const AddItemModal = ({ isOpen, closePopup, onAddItem }) => {
         <ul className="popup__form-radio-list">
           <li className="popup__form-radio-element">
             <label htmlFor="hot" className={`popup__form-radio-label ${weatherType === 'hot' ? 'popup__form-radio-label_checked' : ''}`}>
-              <input type="radio" id="hot" name="weather" value="hot" className="popup__form-radio"  onChange={handleWeather} />
+              <input type="radio" id="hot" name="weather" value="hot" className="popup__form-radio" onChange={handleWeather} />
               Hot
             </label>
           </li>
