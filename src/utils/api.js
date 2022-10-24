@@ -1,4 +1,4 @@
-const baseUrl = 'https://my-json-server.typicode.com/normanewright/project-11';
+const baseUrl = 'https://my-json-server.typicode.com/normanewright/project-11/items';
 // const baseUrl = 'http://localhost:3001/items';
 const headers = {
   "Content-Type": "application/json",
