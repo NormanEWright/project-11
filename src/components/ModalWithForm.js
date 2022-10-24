@@ -3,6 +3,12 @@ import "../blocks/popup.css";
 import closeIcon from "../images/ModalWithForm/close-button.svg";
 
 function ModalWithForm({ name, title, children, buttonText, isOpen, closePopup, handleSubmit }) {
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   closePopup();
+  // }
+
   return(
     <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}>
       <form action="submit" className="popup__form" id="add-garment-form" noValidate>
