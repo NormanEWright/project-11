@@ -27,7 +27,7 @@ class WeatherApi extends React.Component {
           condition: res.weather[0].description,
         }
         return data;
-      })
+      });
   }
 }
 
