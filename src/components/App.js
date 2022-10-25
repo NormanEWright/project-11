@@ -76,12 +76,12 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    removeItem(deleteItem)
-    .then((res) => {
-      setClothingList(clothingList.filter((item) => item.id !== deleteItem))
       setIsConfirmModalOpen(false);
       setDeleteItem(null);
       closeModals();
+    removeItem(deleteItem)
+    .then((res) => {
+      setClothingList(clothingList.filter((item) => item.id !== deleteItem))
     })
     .catch((err) => console.log(err));
   };
@@ -154,7 +154,7 @@ function App() {
           name="confirm" 
           isOpen={isConfirmModalOpen}
           onClose={closeModals}
-          handleCardDelete={handleCardDelete}
+          deleteCard={handleCardDelete}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
