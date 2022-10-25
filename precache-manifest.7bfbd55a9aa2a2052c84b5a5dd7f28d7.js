@@ -80,15 +80,15 @@ self.__precacheManifest = [
     "url": "/project-11/static/media/close-button.0ceeca7a.svg"
   },
   {
-    "revision": "983a42022defba6ab6c547da6be4f228",
-    "url": "/project-11/static/media/CabinetGrotesk-Bold.983a4202.woff"
-  },
-  {
     "revision": "cba8be79bf0195719e0cbcecbc9c62dd",
     "url": "/project-11/static/media/CabinetGrotesk-Medium.cba8be79.woff"
   },
   {
-    "revision": "21bed98fcb925a7399caf3ca765f8ae0",
+    "revision": "983a42022defba6ab6c547da6be4f228",
+    "url": "/project-11/static/media/CabinetGrotesk-Bold.983a4202.woff"
+  },
+  {
+    "revision": "e74395f40b79ebf40c8f6fbd90923de0",
     "url": "/project-11/index.html"
   }
 ];
