@@ -90,6 +90,7 @@ function App() {
     addItem(name, imageUrl, weatherType)
     .then((item) => {
       setClothingList([item, ...clothingList]);
+      closeModals();
     })
     .catch((err) => console.log(err));
   }
