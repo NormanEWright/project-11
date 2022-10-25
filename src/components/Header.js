@@ -5,7 +5,7 @@ import logo from "../images/Header/logo.svg";
 import avatar from "../images/Header/avatar.png";
 import ToggleSwitch from './ToggleSwitch';
 
-function Header(props) {
+function Header({ username, name, currentDate, currentLocation, openPopupWithForm, closePopup }) {
   return (
     <header className='header'>
       <div className="header__left-side">
@@ -13,13 +13,13 @@ function Header(props) {
           <img className="header__logo" src={logo} alt="WTWR Logo" />
         </NavLink>
         <p className="header__date-location">
-          {props.currentDate}, {props.currentLocation}
+          {currentDate}, {currentLocation}
         </p>
       </div>
       <div className="header__right-side">
         <ToggleSwitch />
-        <button className="header__add-button" onClick={props.openPopup}>+ Add clothes</button>
-        <NavLink to="/profile" className="header__user-name" activeClassName='menu__item-active'>{props.username}</NavLink>
+        <button className="header__add-button" onClick={openPopupWithForm}>+ Add clothes</button>
+        <NavLink to="/profile" className="header__user-name" activeClassName='menu__item-active'>{username}</NavLink>
         <img className="header__avatar" src={avatar} alt="User avatar" />
       </div>
     </header>
