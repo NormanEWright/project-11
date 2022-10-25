@@ -146,7 +146,12 @@
   opacity: 0.5;
 }
 
-.popup__form-radio-label_checked {
+.popup__form-radio {
+  opacity: 0.5;
+}
+
+.popup__form-radio:checked,
+.popup__form-radio:checked + .popup__form-radio-label {
   opacity: 1;
 }
 
