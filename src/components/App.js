@@ -76,12 +76,11 @@ function App() {
   };
 
   const handleCardDelete = () => {
-      setIsConfirmModalOpen(false);
-      setDeleteItem(null);
-      closeModals();
     removeItem(deleteItem)
     .then((res) => {
       setClothingList(clothingList.filter((item) => item.id !== deleteItem))
+      setDeleteItem(null);
+      closeModals();
     })
     .catch((err) => console.log(err));
   };

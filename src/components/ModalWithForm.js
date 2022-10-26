@@ -6,7 +6,7 @@ function ModalWithForm({ name, title, children, buttonText, isOpen, closePopup, 
 
   return(
     <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}>
-      <form action="submit" className="popup__form" id="add-garment-form" onSubmit={handleSubmit} >
+      <form action="submit" className="popup__form" onSubmit={handleSubmit} >
         <h3 className="popup__form-heading">{title}</h3>
         {children}
         <button type="submit" className="popup__form-add-button" >{buttonText}</button>

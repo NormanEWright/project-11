@@ -13,7 +13,7 @@ function ItemCard({ data, openPopup, weatherRange }) {
 
   if (data.weather === weatherRange) {
     return (
-      <li key={data.id} className="card" style={{ backgroundImage: `url(${data.imageUrl})` }} onClick={openPreview} >
+      <li className="card" style={{ backgroundImage: `url(${data.imageUrl})` }} onClick={openPreview} >
         <div>
           <h3 className='card__title'>{data.name}</h3>
         </div>
